@@ -76,7 +76,9 @@ if (!$env:VIRTUAL_ENV_DISABLE_PROMPT) {
 
     function global:prompt {
         # Add the custom prefix to the existing prompt
+        $ansi_green = [char]27 + "[32m"
+        $ansi_reset = [char]27 + "[0m"
         $previous_prompt_value = & $function:_old_virtual_prompt
-        ("(" + $env:VIRTUAL_ENV_PROMPT + ") " + $previous_prompt_value)
+        ($ansi_green + "(" + $env:VIRTUAL_ENV_PROMPT + ")" + $ansi_reset + " " + $previous_prompt_value)
     }
 }
